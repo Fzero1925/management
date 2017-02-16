@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 为DAO层接口方法提供SQL语句配置 -->
+<mapper namespace="management.dao.StaffDao">
+
+	<select id="queryStaffById" resultType="Staff">
+		select name,gender,job,salary,email,regdate
+		from staff
+		where id = #{id}
+	</select>
+	
+	<insert id="addStaff" parameterType="Staff">
+		insert ignore into staff
+			(id,name,gender,job,salary,email,regdate)
+		values
+			(staff_seq.nextval,#{name},#{gender},#{job},#{salary},#{email},#{regdate})
+	</insert>
+	
+	<delete id="deleteStaff">
+		delete from staff 
+		where id = #{id}
+	</delete>
+	
+	<update id="updateStaffs">
+		update staff 
+		set
+			name = #{name},
+			gender = #{gender},
+			job = #{job},
+			salary = #{salary},
+			email = #{email},
+			regdate = #{regdate}
+		where
+			id = #{id}
+	</update>
+
+</mapper>
