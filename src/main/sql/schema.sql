@@ -86,5 +86,38 @@ insert into position(id,job) values(position_seq.nextval,'前端');
 insert into position(id,job) values(position_seq.nextval,'产品');
 
 
+-- 创建登录用户信息表
+prompt create table management_login 登录用户信息表...
+
+declare 
+	rowcount number(10);
+begin
+	select count(*) into rowcount from dual where exists(
+		select * from user_objects where object_name = upper('management_login')
+	);
+	if rowcount = 1 then
+		execute immediate 'drop table management_login';
+	end if;
+end;
+/
+
+create table management_login(
+	id number(12) not null primary key,
+	username varchar2(100) not null,
+	password varchar2(100)
+)tablespace management;
+
+-- 创建登录用户信息表自增主键序列
+create SEQUENCE mlogin_seq start with 1 increment by 1;
+
+-- 插入登录用户信息数据
+insert into management_login(id,name,password)
+	values(mlogin_seq.nextval,'admin','admin');
+insert into management_login(id,name,password)
+	values(mlogin_seq.nextval,'fzero','fzero1925');
+insert into management_login(id,name,password)
+	values(mlogin_seq.nextval,'小王','xiaowang');
+
+
 -- 删除表空间
 drop tablespace management including contents;-- including contents表示同时删除表空间内的所有数据文件

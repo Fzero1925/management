@@ -5,6 +5,11 @@
     
 <mapper namespace="management.dao.PositionDao">
 
+	<select id="queryPositionByName" resultType="Position">
+		select id,job from position
+		where job = #{job}
+	</select>
+
 	<insert id="addPosition" parameterType="Position">
 		insert ignore into position(id,job)
 		values (position_seq.nextval,#{job})

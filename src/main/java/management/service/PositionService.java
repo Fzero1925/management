@@ -1,8 +1,8 @@
-package management.dao;
+package management.service;
 
 import management.entity.Position;
 
-public interface PositionDao {
+public interface PositionService {
 	
 	/**
 	 * 查询职位信息
@@ -17,13 +17,13 @@ public interface PositionDao {
 	 * @param positionName
 	 * @return
 	 */
-	int addPosition(String job);
+	String addPosition(String job);
 	
 	/**
 	 * 删除职位
 	 * @param positionId
 	 * @return
 	 */
-	int deletePosition(long id);
+	String deletePosition(long id);
 
 }

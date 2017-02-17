@@ -2,16 +2,16 @@ package management.entity;
 
 public class Position {
 	
-	private int id;
+	private long id;
 	
-	private String name;
+	private String job;
 
 	@Override
 	public String toString() {
-		return "Position [id=" + id + ", name=" + name + "]";
+		return "Position [id=" + id + ", job=" + job + "]";
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -19,12 +19,12 @@ public class Position {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getJob() {
+		return job;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setJob(String job) {
+		this.job = job;
 	}
 
 	
