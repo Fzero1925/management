@@ -6,10 +6,10 @@
 <!-- 为DAO层接口方法提供SQL语句配置 -->
 <mapper namespace="management.dao.StaffDao">
 
-	<select id="queryStaffById" resultType="Staff">
-		select name,gender,job,salary,email,regdate
+	<select id="queryStaffList" resultType="Staff">
+		select id,name,gender,job,salary,email,regdate
 		from staff
-		where id = #{id}
+		order by id 
 	</select>
 	
 	<insert id="addStaff" parameterType="Staff">

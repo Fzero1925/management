@@ -19,7 +19,7 @@ public class Staff {
 	
 	private long salary;
 	
-	private String fepartment;
+	private String department;
 	
 	private String email;
 	
@@ -30,7 +30,7 @@ public class Staff {
 		return "Staff [id=" + id + ", name=" + name 
 				+ ", gender=" + gender  + ", job=" 
 				+ job + ", salary=" + salary
-				+ ", fepartment=" + fepartment 
+				+ ", fepartment=" + department 
 				+ ", email=" + email + ", regDate=" 
 				+ regDate 
 				+ "]";
@@ -76,12 +76,12 @@ public class Staff {
 		this.salary = salary;
 	}
 
-	public String getFepartment() {
-		return fepartment;
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setFepartment(String fepartment) {
-		this.fepartment = fepartment;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	public String getEmail() {

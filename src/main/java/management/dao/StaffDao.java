@@ -11,7 +11,7 @@ public interface StaffDao {
 	 * @param staffId
 	 * @return
 	 */
-	Staff queryStaffById(long id);
+	List<Staff> queryStaffList();
 	
 	/**
 	 * 增加员工

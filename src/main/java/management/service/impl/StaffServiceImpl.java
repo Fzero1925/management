@@ -1,5 +1,7 @@
 package management.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,8 +16,9 @@ public class StaffServiceImpl implements StaffService {
 	@Autowired
 	private StaffDao staffDao;
 
-	public Staff queryStaffById(long id) {
-		return staffDao.queryStaffById(id);
+	public List<Staff> queryStaffList() {
+		List<Staff> staffList = staffDao.queryStaffList();
+		return staffList;
 	}
 
 	@Transactional

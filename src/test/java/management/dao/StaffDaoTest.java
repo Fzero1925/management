@@ -1,5 +1,7 @@
 package management.dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import management.entity.Staff;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/spring-dao.xml"})
+@ContextConfiguration({"classpath:spring.xml"})
 public class StaffDaoTest {
 	
 	@Autowired
@@ -18,10 +20,8 @@ public class StaffDaoTest {
 
 	@Test
 	public void testQueryStaffById() {
-		long id = 3;
-		Staff staff = staffDao.queryStaffById(id);
-		System.out.println(staff.getName());
-		System.out.println(staff);
+		List<Staff> staffList = staffDao.queryStaffList();
+		System.out.println(staffList);
 	}
 
 	@Test

@@ -1,0 +1,77 @@
+<#assign s=JspTaglibs["/WEB-INF/struts-tags.tld"]/>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>管理页面</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+	<!-- 引入 Bootstrap -->
+	<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+	<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+	<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+	<!--[if lt IE 9]>
+	    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading text-center">
+				<h2>员工列表</h2>
+			</div>
+
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<th><button class="btn btn-info">删除</button></th>
+							<th>ID</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>职位</th>
+							<th>薪资</th>
+							<th>Email</th>
+							<th>入职时间</th>
+							<th><button class="btn btn-info">员工管理</button></th>
+							<th><button class="btn btn-info">职位管理</button></th>
+						</tr>
+					</tbody>
+
+					<tfoot>
+					<#if staffList ??>
+						<#list staffList as staff>
+							<tr>
+								<td>
+									<div class="col-lg-6">
+										<div class="input-group">
+												<input type="checkbox">
+										</div><!-- /input-group -->
+									</div><!-- /.col-lg-6 --><br>
+								</td>
+								<td>${staff.id!}</td>
+								<td>${staff.name!}</td>
+								<td>${staff.gender!}</td>
+								<td>${staff.job!}</td>
+								<td>${staff.salary!}</td>
+								<td>${staff.email!}</td>
+								<td>${staff.regDate?string('yyyy-MM-dd')!}</td>
+								<td><button class="btn btn-info">修改</button></td>
+								<td><button class="btn btn-info">删除</button></td>
+							</tr>
+						</#list>
+					</#if>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</html>

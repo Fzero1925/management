@@ -1,5 +1,7 @@
 package management.service;
 
+import java.util.List;
+
 import management.entity.Staff;
 
 public interface StaffService {
@@ -9,7 +11,7 @@ public interface StaffService {
 	 * @param staffId
 	 * @return
 	 */
-	Staff queryStaffById(long id);
+	List<Staff> queryStaffList();
 	
 	/**
 	 * 增加员工
