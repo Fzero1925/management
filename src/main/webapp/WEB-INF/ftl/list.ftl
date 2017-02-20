@@ -27,8 +27,8 @@
 						<tr>
 							<th><button class="btn btn-info">删除</button></th>
 							<th></th><th></th><th></th><th></th><th></th><th></th><th></th>
-							<th><a class="btn btn-info" href="/management/staff">员工管理</a></th>
-							<th><a class="btn btn-info" href="/management/position">职位管理</a></th>
+							<th><a class="btn btn-info" href="/management/staff" onclick="deleteCookie()">员工管理</a></th>
+							<th><a class="btn btn-info" href="/management/position" onclick="deleteCookie()">职位管理</a></th>
 						</tr>
 					</thead>
 					

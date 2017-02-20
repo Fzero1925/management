@@ -64,7 +64,7 @@
 								</div>
 							</th>
 							<th><button class="btn btn-info" onclick="addStaff()">提交</button></th>
-							<th><a class="btn btn-info" href="/management/list">返回列表页</a></th>
+							<th><a class="btn btn-info" href="/management/list" onclick="deleteCookie()">返回列表页</a></th>
 						</tr>
 					</thead>
 				</table>
