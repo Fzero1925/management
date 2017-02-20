@@ -29,10 +29,14 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 /*	@Autowired
 	private ManageCookie manageCookie;*/
 	
+	/**
+	 * 分页显示
+	 */
 	public String execute(){
 		List<Staff> staffList = staffService.queryStaffList();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("staffList", staffList);
+		return SUCCESS;
 		
 		
 /*		for(Staff staff : staffList){
@@ -49,9 +53,13 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 		Map<String,List<Staff>> staffMap = new HashMap<String,List<Staff>>();
 		staffMap.put("staffList", staffList);
 		FreeMarkertUtil.analysisTemplate("staff.ftl", "UTF-8", staffMap);*/
-		return SUCCESS;
 	}
 	
+	/**
+	 * 根据ID删除员工信息
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	public String deleteById() throws UnsupportedEncodingException{
 		ManageCookie manageCookie = new ManageCookie();
 		Map<String,Object> cookieMap = manageCookie.getCookie();
@@ -59,6 +67,12 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 		return SUCCESS;
 	}
 	
+	
+	/**
+	 * 添加员工
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	public String addStaff() throws UnsupportedEncodingException{
 		ManageCookie manageCookie = new ManageCookie();
 		Map<String,Object> cookieMap = manageCookie.getCookie();
@@ -67,6 +81,11 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 							  cookieMap.get("job").toString(), 
 							  Long.parseLong(cookieMap.get("salary").toString()), 
 							  cookieMap.get("email").toString());
+		return SUCCESS;
+	}
+	
+	public String queryByPage(){
+		
 		return SUCCESS;
 	}
 

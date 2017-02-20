@@ -7,9 +7,9 @@
 <mapper namespace="management.dao.StaffDao">
 
 	<select id="queryStaffList" resultType="Staff">
-		select id,name,gender,job,salary,email,regdate
-		from staff
-		order by id 
+		select id,name,gender,job,salary,email,regdate from (
+			select rownum rn, s.* from staff s order by id ) st
+		where st.rn between 1 and 5
 	</select>
 	
 	<insert id="addStaff" >
@@ -23,6 +23,12 @@
 		delete from staff 
 		where id = #{id}
 	</delete>
+	
+	<select id="queryByPage" resultType="Staff">
+		select * from (
+			select rownum rn, s.* from staff s order by id ) st
+		where st.rn between #{pageStart} and #{pageEnd}
+	</select>
 	
 	<update id="updateStaffs">
 		update staff 

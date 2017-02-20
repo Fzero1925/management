@@ -32,6 +32,12 @@ public class StaffServiceImpl implements StaffService {
 	}
 
 	@Transactional
+	public List<Staff> queryByPage(int pageStart, int pageEnd) {
+		List<Staff> staffList = staffDao.queryByPage(pageStart, pageEnd);
+		return staffList;
+	}
+
+	@Transactional
 	public String updateStaffs(Staff staff) {
 		int result = staffDao.updateStaffs(staff);
 		if(result > 0){

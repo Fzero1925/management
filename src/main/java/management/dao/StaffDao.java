@@ -34,6 +34,14 @@ public interface StaffDao {
 	int deleteById(long id);
 	
 	/**
+	 * 分页查询
+	 * @param pageStart
+	 * @param pageEnd
+	 * @return
+	 */
+	List<Staff> queryByPage(@Param("pageStart") int pageStart, @Param("pageEnd") int pageEnd);
+	
+	/**
 	 * 更新员工信息（涨工资等）
 	 * @param staffId
 	 * @return

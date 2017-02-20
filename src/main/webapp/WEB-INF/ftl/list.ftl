@@ -30,9 +30,6 @@
 							<th><a class="btn btn-info" href="/management/staff" onclick="deleteCookie()">员工管理</a></th>
 							<th><a class="btn btn-info" href="/management/position" onclick="deleteCookie()">职位管理</a></th>
 						</tr>
-					</thead>
-					
-					<tbody>
 						<tr>
 							<th></th>
 							<th>ID</th>
@@ -45,10 +42,10 @@
 							<th></th>
 							<th></th>
 						</tr>
-					</tbody>
-
-					<tfoot>
-					<#if staffList ??>
+					</thead>
+					
+					<tbody>
+						<#if staffList ??>
 						<#list staffList as staff>
 							<tr>
 								<td>
@@ -71,8 +68,37 @@
 							</tr>
 						</#list>
 					</#if>
+					</tbody>
+
+					<tfoot>
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th>
+							</th>
+							<th>
+								
+							</th>
+							<th></th>
+						</tr>
 					</tfoot>
 				</table>
+				<div>
+					<div class="col-lg-offset-8 input-group">
+						<a onclick="firstPage">首页</a>&nbsp;&nbsp;
+						<a onclick="firstPage">上一页</a>&nbsp;&nbsp;
+						<a onclick="firstPage">下一页</a>&nbsp;&nbsp;
+							<input type="text" class="form-control" style="max-width:50%;float:right">
+							<span class="input-group-btn">
+								<button class="btn btn-default">Go</button>
+							</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

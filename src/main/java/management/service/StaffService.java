@@ -28,6 +28,14 @@ public interface StaffService {
 	void deleteById(long id);
 	
 	/**
+	 * 分页查询
+	 * @param pageStart
+	 * @param pageEnd
+	 * @return
+	 */
+	List<Staff> queryByPage (int pageStart, int pageEnd);
+	
+	/**
 	 * 更新员工信息（涨工资等）
 	 * @param staffId
 	 * @return
