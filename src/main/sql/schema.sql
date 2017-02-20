@@ -24,12 +24,12 @@ end;
 
 create table staff(
 	id number(12,0) not null primary key,
-	name varchar2(125),
-	gender number(1,0),-- 0:male 1:female
-	job varchar2(20),
+	name nvarchar2(125),
+	gender nvarchar2(10),
+	job nvarchar2(20),
 	salary number(12,0),
 	department varchar2(20),
-	email varchar2(125),
+	email nvarchar2(125),
 	regdate date
 ) tablespace management;
 
@@ -39,17 +39,18 @@ create SEQUENCE staff_seq start with 1 increment by 1 minvalue 1;
 
 -- 插入员工测试数据
 insert into staff(id,name,gender,job,salary,email,regdate)
-	values(staff_seq.nextval,'小明',0,'Java',2500,'xiaoming@gmail.com',sysdate);
+	values(staff_seq.nextval,'小明','男','Java',2500,'xiaoming@gmail.com',sysdate);
 insert into staff(id,name,gender,job,salary,email,regdate)
-	values(staff_seq.nextval,'小花',1,'美工',2000,'xiaohua@gmail.com',sysdate);
+	values(staff_seq.nextval,'小花','女','美工',2000,'xiaohua@gmail.com',sysdate);
 insert into staff(id,name,gender,job,salary,email,regdate)
-	values(staff_seq.nextval,'小红',1,'前端',3000,'xiaohong@gmail.com',add_months(sysdate,-6));
+	values(staff_seq.nextval,'小红','女','前端',3000,'xiaohong@gmail.com',add_months(sysdate,-6));
 insert into staff(id,name,gender,job,salary,email,regdate)
-	values(staff_seq.nextval,'小王',0,'PHP',2500,'xiaowang@gmail.com',add_months(sysdate,-3));
+	values(staff_seq.nextval,'小王','男','PHP',2500,'xiaowang@gmail.com',add_months(sysdate,-3));
 insert into staff(id,name,gender,job,salary,email,regdate)
-	values(staff_seq.nextval,'小张',0,'产品',4000,'xiaozhang@gmail.com',add_months(sysdate,-12));
+	values(staff_seq.nextval,'小张','男','产品',4000,'xiaozhang@gmail.com',add_months(sysdate,-12));
 
--- 删除序列
+-- 删除操作
+drop table staff;
 drop sequence staff_seq;
 
 
@@ -93,15 +94,15 @@ declare
 	rowcount number(10);
 begin
 	select count(*) into rowcount from dual where exists(
-		select * from user_objects where object_name = upper('management_login')
+		select * from user_objects where object_name = upper('manage_login')
 	);
 	if rowcount = 1 then
-		execute immediate 'drop table management_login';
+		execute immediate 'drop table manage_login';
 	end if;
 end;
 /
 
-create table management_login(
+create table manage_login(
 	id number(12) not null primary key,
 	username varchar2(100) not null,
 	password varchar2(100)
@@ -111,12 +112,16 @@ create table management_login(
 create SEQUENCE mlogin_seq start with 1 increment by 1;
 
 -- 插入登录用户信息数据
-insert into management_login(id,name,password)
+insert into manage_login(id,username,password)
 	values(mlogin_seq.nextval,'admin','admin');
-insert into management_login(id,name,password)
+insert into manage_login(id,username,password)
 	values(mlogin_seq.nextval,'fzero','fzero1925');
-insert into management_login(id,name,password)
+insert into manage_login(id,username,password)
 	values(mlogin_seq.nextval,'小王','xiaowang');
+	
+-- 删除操作
+drop table manage_login;
+drop sequence mlogin_seq;
 
 
 -- 删除表空间

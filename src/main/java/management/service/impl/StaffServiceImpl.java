@@ -22,13 +22,8 @@ public class StaffServiceImpl implements StaffService {
 	}
 
 	@Transactional
-	public String addStaff(Staff staff) {
-		int result = staffDao.addStaff(staff);
-		if(result > 0){
-			return "success";
-		}else{
-			return "error";
-		}
+	public void addStaff(String name, String gender, String job, long salary, String email) {
+		staffDao.addStaff(name, gender, job, salary, email);
 	}
 
 	@Transactional

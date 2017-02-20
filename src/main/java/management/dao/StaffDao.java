@@ -2,6 +2,8 @@ package management.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import management.entity.Staff;
 
 public interface StaffDao {
@@ -18,7 +20,11 @@ public interface StaffDao {
 	 * @param staff
 	 * @return
 	 */
-	int addStaff(Staff staff);
+	int addStaff(@Param("name") String name, 
+				 @Param("gender") String gender, 
+				 @Param("job") String job, 
+				 @Param("salary") long salary, 
+				 @Param("email") String email);
 	
 	/**
 	 * 删除员工信息

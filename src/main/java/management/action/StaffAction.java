@@ -1,5 +1,6 @@
 package management.action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,10 +52,21 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 		return SUCCESS;
 	}
 	
-	public String deleteById(){
+	public String deleteById() throws UnsupportedEncodingException{
 		ManageCookie manageCookie = new ManageCookie();
-		Map<String,Object> cookieMap = manageCookie.getCookie("staffId");
+		Map<String,Object> cookieMap = manageCookie.getCookie();
 		staffService.deleteById(Long.parseLong(cookieMap.get("staffId").toString()));
+		return SUCCESS;
+	}
+	
+	public String addStaff() throws UnsupportedEncodingException{
+		ManageCookie manageCookie = new ManageCookie();
+		Map<String,Object> cookieMap = manageCookie.getCookie();
+		staffService.addStaff(cookieMap.get("name").toString(), 
+							  cookieMap.get("gender").toString(), 
+							  cookieMap.get("job").toString(), 
+							  Long.parseLong(cookieMap.get("salary").toString()), 
+							  cookieMap.get("email").toString());
 		return SUCCESS;
 	}
 

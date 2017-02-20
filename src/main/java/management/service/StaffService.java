@@ -18,7 +18,7 @@ public interface StaffService {
 	 * @param staff
 	 * @return
 	 */
-	String addStaff(Staff staff);
+	void addStaff(String name, String gender, String job, long salary, String email);
 	
 	/**
 	 * 删除员工信息

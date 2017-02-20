@@ -12,11 +12,11 @@
 		order by id 
 	</select>
 	
-	<insert id="addStaff" parameterType="Staff">
-		insert ignore into staff
+	<insert id="addStaff" >
+		insert into staff
 			(id,name,gender,job,salary,email,regdate)
 		values
-			(staff_seq.nextval,#{name},#{gender},#{job},#{salary},#{email},#{regdate})
+			(staff_seq.nextval,#{name},#{gender},#{job},#{salary},#{email},sysdate)
 	</insert>
 	
 	<delete id="deleteById">

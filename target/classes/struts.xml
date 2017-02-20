@@ -29,7 +29,11 @@
 
 	<package name="management" extends="struts-default" namespace="/">
 		<action name="list" class="management.action.StaffAction" >
-			<result  type="freemarker">/WEB-INF/ftl/list.ftl</result>
+			<result type="freemarker">/WEB-INF/ftl/list.ftl</result>
+		</action>
+		
+		<action name="staff" class="management.action.StaffAction">
+			<result type="freemarker">/WEB-INF/ftl/staff.ftl</result>
 		</action>
 	</package>
 </struts>
