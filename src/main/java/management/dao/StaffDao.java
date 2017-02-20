@@ -25,7 +25,7 @@ public interface StaffDao {
 	 * @param staffId
 	 * @return
 	 */
-	int deleteStaff(int id);
+	int deleteById(long id);
 	
 	/**
 	 * 更新员工信息（涨工资等）

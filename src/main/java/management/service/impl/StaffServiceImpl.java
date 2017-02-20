@@ -32,13 +32,8 @@ public class StaffServiceImpl implements StaffService {
 	}
 
 	@Transactional
-	public String deleteStaff(int id) {
-		int result = staffDao.deleteStaff(id);
-		if(result > 0){
-			return "success";
-		}else{
-			return "error";
-		}
+	public void deleteById(long id) {
+		staffDao.deleteById(id);
 	}
 
 	@Transactional

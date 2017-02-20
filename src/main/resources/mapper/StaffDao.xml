@@ -19,7 +19,7 @@
 			(staff_seq.nextval,#{name},#{gender},#{job},#{salary},#{email},#{regdate})
 	</insert>
 	
-	<delete id="deleteStaff">
+	<delete id="deleteById">
 		delete from staff 
 		where id = #{id}
 	</delete>

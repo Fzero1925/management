@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import management.dto.ManageCookie;
 import management.entity.Staff;
 import management.service.StaffService;
 
@@ -23,9 +25,11 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 	@Autowired
 	private StaffService staffService;
 	
+/*	@Autowired
+	private ManageCookie manageCookie;*/
+	
 	public String execute(){
 		List<Staff> staffList = staffService.queryStaffList();
-		System.out.println(staffList);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("staffList", staffList);
 		
@@ -44,6 +48,13 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 		Map<String,List<Staff>> staffMap = new HashMap<String,List<Staff>>();
 		staffMap.put("staffList", staffList);
 		FreeMarkertUtil.analysisTemplate("staff.ftl", "UTF-8", staffMap);*/
+		return SUCCESS;
+	}
+	
+	public String deleteById(){
+		ManageCookie manageCookie = new ManageCookie();
+		Map<String,Object> cookieMap = manageCookie.getCookie("staffId");
+		staffService.deleteById(Long.parseLong(cookieMap.get("staffId").toString()));
 		return SUCCESS;
 	}
 

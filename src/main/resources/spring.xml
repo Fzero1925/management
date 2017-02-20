@@ -52,7 +52,7 @@
 
 
 	<!-- Service层 -->
-	<context:component-scan base-package="management.service,management.dao" />
+	<context:component-scan base-package="management.service,management.dao,management.dto" />
 
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"

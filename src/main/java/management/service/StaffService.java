@@ -25,7 +25,7 @@ public interface StaffService {
 	 * @param staffId
 	 * @return
 	 */
-	String deleteStaff(int id);
+	void deleteById(long id);
 	
 	/**
 	 * 更新员工信息（涨工资等）

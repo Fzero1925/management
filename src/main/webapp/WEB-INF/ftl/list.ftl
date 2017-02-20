@@ -23,9 +23,18 @@
 
 			<div class="panel-body">
 				<table class="table table-striped">
-					<tbody>
+					<thead>
 						<tr>
 							<th><button class="btn btn-info">删除</button></th>
+							<th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+							<th><a class="btn btn-info" href="/management/staff">员工管理</a></th>
+							<th><a class="btn btn-info" href="/management/position">职位管理</a></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<th></th>
 							<th>ID</th>
 							<th>姓名</th>
 							<th>性别</th>
@@ -33,8 +42,8 @@
 							<th>薪资</th>
 							<th>Email</th>
 							<th>入职时间</th>
-							<th><button class="btn btn-info">员工管理</button></th>
-							<th><button class="btn btn-info">职位管理</button></th>
+							<th></th>
+							<th></th>
 						</tr>
 					</tbody>
 
@@ -56,8 +65,9 @@
 								<td>${staff.salary!}</td>
 								<td>${staff.email!}</td>
 								<td>${staff.regDate?string('yyyy-MM-dd')!}</td>
-								<td><button class="btn btn-info">修改</button></td>
-								<td><button class="btn btn-info">删除</button></td>
+								<#--<td><button class="btn btn-info">修改</button></td>-->
+								<td></td>
+								<td><button class="btn btn-info" onclick="deleteStaffById(${staff.id!})">删除</button></td>
 							</tr>
 						</#list>
 					</#if>
@@ -73,5 +83,12 @@
 	 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- 使用CDN获取公共js  -->
+<!-- jQuery cookie操作插件 -->
+<script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+<!-- 引入外部js -->	
+<script src="resources/js/staff.js" type="text/javascript"></script>
 
 </html>
