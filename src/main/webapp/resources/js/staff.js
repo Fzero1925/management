@@ -2,20 +2,25 @@ var manage = {
 
 	url : {
 		list : function(key) {
-			return '/management/list!' + key;
+			return '/management/list_' + key + '.action';
 		},
 		
 		addStaff : function(key){
-			return '/management/staff!' + key;
+			return '/management/staff_' + key + '.action';
+		},
+		
+		page : function(key){
+			return '/management/list_' + key + '.action';
 		}
 	}
 }
+
 
 function deleteStaffById(id){
 	$.cookie("staffId", id)
 	$.post(manage.url.list("deleteById"), {}, function(){
 		window.location.reload();//刷新页面
-	})
+	});
 }
 
 //URLEncoder.encode()
@@ -49,8 +54,122 @@ function addStaff(){
 		$.cookie("gender", gender, {expires:time.toGMTString()});
 		$.cookie("job", job, {expires:time.toGMTString()});
 		$.cookie("salary", salary, {expires:time.toGMTString()});*/
-	})
+	});
 }
+
+function active(pageNum){
+	switch(pageNum % 5){
+	case 1:
+		$("#li1").attr("class", "active");
+		$("#li2").attr("class", "");
+		$("#li3").attr("class", "");
+		$("#li4").attr("class", "");
+		$("#li5").attr("class", "");
+		break;
+	case 2:
+		$("#li1").attr("class", "");
+		$("#li2").attr("class", "active");
+		$("#li3").attr("class", "");
+		$("#li4").attr("class", "");
+		$("#li5").attr("class", "");
+		break;
+	case 3:
+		$("#li1").attr("class", "");
+		$("#li2").attr("class", "");
+		$("#li3").attr("class", "active");
+		$("#li4").attr("class", "");
+		$("#li5").attr("class", "");
+		break;
+	case 4:
+		$("#li1").attr("class", "");
+		$("#li2").attr("class", "");
+		$("#li3").attr("class", "");
+		$("#li4").attr("class", "active");
+		$("#li5").attr("class", "");
+		break;
+	case 5:
+		$("#li1").attr("class", "");
+		$("#li2").attr("class", "");
+		$("#li3").attr("class", "");
+		$("#li4").attr("class", "");
+		$("#li5").attr("class", "active");
+		break;
+	}
+}
+
+function firstPage(){
+	$.cookie("pageNum", 1);
+	$.post(manage.url.page("queryByPage"), {}, function(){
+		window.location.reload();
+	});
+}
+
+$(document).ready(function(){
+	
+/*	$.post(manage.url.list("queryByPage"), {}, function(){
+	});*/
+	
+	$("#first").click(function(){
+		$.cookie("pageNum", 1);
+		$.post(manage.url.page("queryByPage"), {}, function(){
+			window.location.reload();
+		});
+	});
+	
+	$("#pre").click(function(){
+		//当前页数判断
+		if($.cookie("pageNum") == 1){
+			alert("已经在第一页中");
+		}else if($.cookie("pageNum") > 1){
+			var num = $.cookie("pageNum") - 1;
+			$.cookie("pageNum", num);
+			$.post(manage.url.page("queryByPage"), {}, function(){})
+		}else{
+			alert('没有负数页码');
+		}
+	});
+	
+	$("#num1").click(function(){
+		$.cookie("pageNum", 1);
+		active($.cookie("pageNum"));
+		$.post(manage.url.page("queryByPage"), {}, function(){
+			window.location.reload();
+		});
+	});
+	
+	$("#num2").click(function(){
+		$.cookie("pageNum", 2);
+		active($.cookie("pageNum"));
+		$.post(manage.url.page("queryByPage"), {}, function(){
+			window.location.reload();
+		});
+	});
+	
+	$("#num3").click(function(){
+		$.cookie("pageNum", 3);
+		active($.cookie("pageNum"));
+		$.post(manage.url.page("queryByPage"), {}, function(){
+			window.location.reload();
+		});
+	});
+	
+	$("#num4").click(function(){
+		$.cookie("pageNum", 4);
+		active($.cookie("pageNum"));
+		$.post(manage.url.page("queryByPage"), {}, function(){
+			window.location.reload();
+		});
+	});
+	
+	$("#num5").click(function(){
+		$.cookie("pageNum", 5);
+		active($.cookie("pageNum"));
+		$.post(manage.url.page("queryByPage"), {}, function(){
+			window.location.reload();
+		});
+	});
+});
+
 
 function deleteCookie(){
 	document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
@@ -59,6 +178,15 @@ function deleteCookie(){
 	document.cookie = "salary=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 	document.cookie = "staffId=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+
+//测试代码
+function show(){
+	//获取第一个a标签的文本，最好使用id，这里使用标签获取
+    document.getElementsByTagName("a")[0].innerText;
+    
+    //改变第一个a标签的文本
+    documen.getElementsByTagName("a")[0].innerText = 2;
 }
 
 

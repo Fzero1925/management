@@ -14,19 +14,13 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private LoginDao loginDao;
 
+	/**
+	 * 验证登录用户
+	 */
 	@Transactional
-	public Login queryLoginByName(String username) {
-		return loginDao.queryLoginByName(username);
-	}
-
-	@Transactional
-	public String addLoginUser(String username, String password) {
-		int result = loginDao.addLoginUser(username, password);
-		if(result > 0){
-			return "success";
-		}else{
-			return "error";
-		}
+	public Login check(String username, String password) {
+		Login loginInfo = loginDao.check(username, password);
+		return loginInfo;
 	}
 
 }

@@ -2,25 +2,13 @@ package management.entity;
 
 public class Login {
 	
-	private long id;
-	
 	private String username;
 	
 	private String password;
 
 	@Override
 	public String toString() {
-		return "Login [id=" + id + ", username=" + username 
-				+ ", password=" + password 
-				+ "]";
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		return "Login [username=" + username + ", password=" + password + "]";
 	}
 
 	public String getUsername() {

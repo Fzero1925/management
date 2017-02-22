@@ -7,18 +7,8 @@ import management.entity.Login;
 public interface LoginDao {
 	
 	/**
-	 * 查询登录用户信息
-	 * @param username
-	 * @return
+	 * 获取指定登录用户信息
 	 */
-	Login queryLoginByName(String username);
-	
-	/**
-	 * 增加登录用户
-	 * @param username
-	 * @param password
-	 * @return
-	 */
-	int addLoginUser(@Param("username") String username, @Param("passwrod") String password);
+	Login check(@Param("username") String username, @Param("password") String password);
 
 }

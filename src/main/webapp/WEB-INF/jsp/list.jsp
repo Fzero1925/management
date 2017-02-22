@@ -1,18 +1,10 @@
-<#assign s=JspTaglibs["/WEB-INF/struts-tags.tld"]/>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="common/tag.jsp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>管理页面</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-	<!-- 引入 Bootstrap -->
-	<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
- 
-	<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
-	<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
-	<!--[if lt IE 9]>
-	    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
+<%@ include file="common/head.jsp" %>
+<title>员工列表页</title>
 </head>
 <body>
 	<div class="container">
@@ -46,8 +38,7 @@
 					</thead>
 					
 					<tbody>
-						<#if staffList ??>
-						<#list staffList as staff>
+						<s:iterator value="staffList" var="staff">
 							<tr>
 								<td>
 									<div class="col-lg-6">
@@ -56,19 +47,18 @@
 										</div><!-- /input-group -->
 									</div><!-- /.col-lg-6 --><br>
 								</td>
-								<td>${staff.id!}</td>
-								<td>${staff.name!}</td>
-								<td>${staff.gender!}</td>
-								<td>${staff.job!}</td>
-								<td>${staff.salary!}</td>
-								<td>${staff.email!}</td>
-								<td>${staff.regDate?string('yyyy-MM-dd')!}</td>
-								<#--<td><button class="btn btn-info">修改</button></td>-->
+								<td><s:property value="#staff.id"/></td>
+								<td><s:property value="#staff.name"/></td>
+								<td><s:property value="#staff.gender"/></td>
+								<td><s:property value="#staff.job"/></td>
+								<td><s:property value="#staff.salary"/></td>
+								<td><s:property value="#staff.email"/></td>
+								<td><s:date name="#staff.regDate" format="yyyy-MM-dd"/></td>
+								<!-- <td><button class="btn btn-info">修改</button></td> -->
 								<td></td>
-								<td><button class="btn btn-info" onclick="deleteStaffById(${staff.id!})">删除</button></td>
+								<td><button class="btn btn-info" onclick="deleteStaffById()">删除</button></td>
 							</tr>
-						</#list>
-					</#if>
+						</s:iterator>
 					</tbody>
 
 					<tfoot>
@@ -124,5 +114,4 @@
 
 <!-- 引入外部js -->	
 <script src="resources/js/staff.js" type="text/javascript"></script>
-
 </html>

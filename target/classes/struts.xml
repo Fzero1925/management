@@ -19,21 +19,24 @@
 	<!-- 文件上传最大值 -->
 	<constant name="struts.multipart.maxSize" value="104857600" />
 	<!-- 让struts2支持动态方法调用,使用叹号访问方法 -->
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
-	<!-- Action名称中是否还是用斜线 -->
-	<constant name="struts.enable.SlashesInActionNames" value="false" />
+<!-- 	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> -->
 	<!-- 允许标签中使用表达式语法 -->
 	<constant name="struts.tag.altSyntax" value="true" />
 	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
 	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
 
 	<package name="management" extends="struts-default" namespace="/">
-		<action name="list" class="management.action.StaffAction" >
-			<result type="freemarker">/WEB-INF/ftl/list.ftl</result>
+		<action name="login" class="management.action.LoginAction" method="login">
+			<result name="success" type="redirect">/list</result>
+			<result name="input" >/WEB-INF/jsp/login.jsp</result>
+		</action>
+	
+		<action name="list_*" class="management.action.StaffAction" method="{1}">
+			<result >/WEB-INF/jsp/list.jsp</result>
 		</action>
 		
 		<action name="staff" class="management.action.StaffAction">
-			<result type="freemarker">/WEB-INF/ftl/staff.ftl</result>
+			<result >/WEB-INF/jsp/staff.jsp</result>
 		</action>
 	</package>
 </struts>

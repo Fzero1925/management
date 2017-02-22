@@ -11,6 +11,9 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
     
+    <!-- 自动扫描需要Spring容器管理的包 -->
+	<context:component-scan base-package="management.service,management.dao" />
+    
     <!-- DAO层 -->
     <!-- 加载数据库相关参数 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -52,7 +55,6 @@
 
 
 	<!-- Service层 -->
-	<context:component-scan base-package="management.service,management.dao,management.dto" />
 
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
@@ -69,9 +71,9 @@
 	
 	
 	<!-- WEB层 -->
-	<bean id="staffAction" class="management.action.StaffAction" scope="prototype">
+	<bean id="staffAction" class="management.action.StaffAction" scope="prototype"></bean>
 	
-	</bean>
+	<bean id="loginAction" class="management.action.LoginAction" scope="prototype"></bean>
         
 </beans>
 
