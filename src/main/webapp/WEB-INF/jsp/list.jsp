@@ -14,11 +14,11 @@
 			</div>
 
 			<div class="panel-body">
-			
+			<form id="mainForm" method="post">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th><button class="btn btn-info">删除</button></th>
+							<th><button class="btn btn-info" onclick="deleteMore()">删除</button></th>
 							<th></th><th></th><th></th><th></th><th></th><th></th><th></th>
 							<th><a class="btn btn-info" href="/management/staff" onclick="deleteCookie()">员工管理</a></th>
 							<th><a class="btn btn-info" href="/management/position" onclick="deleteCookie()">职位管理</a></th>
@@ -38,22 +38,23 @@
 					</thead>
 					
 					<tbody>
-						<s:iterator value="staffList" var="staff">
+					<%-- <s:debug></s:debug> --%>
+						<s:iterator value="list" var="s">
 							<tr>
 								<td>
 									<div class="col-lg-6">
 										<div class="input-group">
-												<input type="checkbox">
+												<input type="checkbox" name="ids" value=<s:property value="#s.id"/>>
 										</div><!-- /input-group -->
 									</div><!-- /.col-lg-6 --><br>
 								</td>
-								<td><s:property value="#staff.id"/></td>
-								<td><s:property value="#staff.name"/></td>
-								<td><s:property value="#staff.gender"/></td>
-								<td><s:property value="#staff.job"/></td>
-								<td><s:property value="#staff.salary"/></td>
-								<td><s:property value="#staff.email"/></td>
-								<td><s:date name="#staff.regDate" format="yyyy-MM-dd"/></td>
+								<td><s:property value="#s.id"/></td>
+								<td><s:property value="#s.name"/></td>
+								<td><s:property value="#s.gender"/></td>
+								<td><s:property value="#s.job"/></td>
+								<td><s:property value="#s.salary"/></td>
+								<td><s:property value="#s.email"/></td>
+								<td><s:date name="#s.regDate" format="yyyy-MM-dd"/></td>
 								<!-- <td><button class="btn btn-info">修改</button></td> -->
 								<td></td>
 								<td><button class="btn btn-info" onclick="deleteStaffById()">删除</button></td>
@@ -79,18 +80,41 @@
 						</tr>
 					</tfoot>
 				</table>
+				</form>
 				<div>
 					<div class="col-lg-offset-6 input-group" >
 						<ul class="pagination" >
-							<li><span class="btn btn-default" id="first">首页</span></li>
-							<li><span class="btn btn-default" id="pre">上一页</span></li>
-							<li id="li1"><span class="btn btn-default" id="num1">1</span></li>
-							<li id="li2"><span class="btn btn-default" id="num2">2</span></li>
-							<li id="li3"><span class="btn btn-default" id="num3">3</span></li>
-							<li id="li4"><span class="btn btn-default" id="num4">4</span></li>
-							<li id="li5"><span class="btn btn-default" id="num5">5</span></li>
-							<li><span class="btn btn-default" id="next">下一页</span></li>
-								<input type="text" class="form-control" style="max-width:15%;">
+							<li><a class="btn btn-default" 
+								   href="/management/list_queryByPage.action?pageNum=1">
+								  	 首页
+							</a></li>
+							<li>
+							<s:if test="currentPage != 1">
+								<a class="btn btn-default" 
+									   href="/management/list_queryByPage.action?pageNum=<s:property value="currentPage - 1"/>">
+									   上一页
+								</a>
+							</s:if>
+							</li>
+							<%-- <s:iterator value="list" var="s">
+								<li id="li1"><span class="btn btn-default" id="num1">1</span></li>
+								<li id="li2"><span class="btn btn-default" id="num2">2</span></li>
+								<li id="li3"><span class="btn btn-default" id="num3">3</span></li>
+								<li id="li4"><span class="btn btn-default" id="num4">4</span></li>
+								<li id="li5"><span class="btn btn-default" id="num5">5</span></li>
+							</s:iterator> --%>
+							<li id="li6"><span >
+								当前第<s:property value="currentPage"/>/<s:property value="sumPage"/>页
+							</span></li>
+							<li>
+							<s:if test="currentPage != sumPage">
+								<a class="btn btn-default" 
+									   href="/management/list_queryByPage.action?pageNum=<s:property value="currentPage + 1"/>">
+								下一页
+								</a>
+							</s:if>
+							</li>
+								<input type="text" class="form-control" id="inputGo" style="max-width:20%;">
 								<span class="input-group-btn">
 									<button class="btn btn-default" id="go">Go</button>
 								</span>
@@ -114,4 +138,11 @@
 
 <!-- 引入外部js -->	
 <script src="resources/js/staff.js" type="text/javascript"></script>
+<!-- <script type="text/javascript">
+	$(function(){
+		manage.init({
+			currentPage : <s:property value="currentPage"/>
+		});
+	}); -->
+</script>
 </html>

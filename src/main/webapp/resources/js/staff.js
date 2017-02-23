@@ -11,8 +11,13 @@ var manage = {
 		
 		page : function(key){
 			return '/management/list_' + key + '.action';
-		}
+		},
+		
 	}
+	
+/*	init : function(params){
+		var currentPage = params['currentPage'];
+	}*/
 }
 
 
@@ -57,7 +62,7 @@ function addStaff(){
 	});
 }
 
-function active(pageNum){
+/*function active(pageNum){
 	switch(pageNum % 5){
 	case 1:
 		$("#li1").attr("class", "active");
@@ -95,7 +100,7 @@ function active(pageNum){
 		$("#li5").attr("class", "active");
 		break;
 	}
-}
+}*/
 
 function firstPage(){
 	$.cookie("pageNum", 1);
@@ -116,7 +121,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	$("#pre").click(function(){
+/*	$("#pre").click(function(){
 		//当前页数判断
 		if($.cookie("pageNum") == 1){
 			alert("已经在第一页中");
@@ -127,9 +132,9 @@ $(document).ready(function(){
 		}else{
 			alert('没有负数页码');
 		}
-	});
+	});*/
 	
-	$("#num1").click(function(){
+/*	$("#num1").click(function(){
 		$.cookie("pageNum", 1);
 		active($.cookie("pageNum"));
 		$.post(manage.url.page("queryByPage"), {}, function(){
@@ -167,8 +172,41 @@ $(document).ready(function(){
 		$.post(manage.url.page("queryByPage"), {}, function(){
 			window.location.reload();
 		});
-	});
+	});*/
 });
+
+$('#go').click(function(){
+	var pageNum = $('#inputGo').val();
+	console.log(pageNum);
+/*	if($.cookie("pageNum")){
+		$.cookie("pageNum", "");
+	}*/
+	if(pageNum == null){
+		alert("没有输入页码！！！");
+	}else{
+		$.post(manage.url.page("queryByPage"), {"pageNum" : pageNum}, function(){
+			if($.cookie("pageInfo") == ""){
+				location.href="/management/list_queryByPage.action?pageNum=" + pageNum;
+			}else
+			if($.cookie("pageInfo") == "noPage"){
+				alert("没有负数页码！！！");
+				/*$.cookie("pageInfo", "");*/
+			}else if($.cookie("pageInfo") == "noData"){
+				alert("没有数据！！！");
+				/*$.cookie("pageInfo", "");*/
+			}
+		});
+	}
+});
+
+function deleteMore(){
+	var mainForm = $('#mainForm');
+	mainForm.attr("action", "/management/list_deleteBatch.action");
+	mainForm.submit;
+	
+	/*alert($(':checkbox[name=staff]:checked'));*/
+}
+
 
 
 function deleteCookie(){

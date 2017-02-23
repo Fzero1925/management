@@ -48,4 +48,10 @@ public interface StaffDao {
 	 */
 	int updateStaffs(Staff staff);
 
+	/**
+	 * 批量删除员工信息
+	 * @param idList
+	 */
+	void deleteBatch(List<Integer> idList);
+
 }

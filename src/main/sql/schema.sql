@@ -48,6 +48,12 @@ insert into staff(id,name,gender,job,salary,email,regdate)
 	values(staff_seq.nextval,'小王','男','PHP',2500,'xiaowang@gmail.com',add_months(sysdate,-3));
 insert into staff(id,name,gender,job,salary,email,regdate)
 	values(staff_seq.nextval,'小张','男','产品',4000,'xiaozhang@gmail.com',add_months(sysdate,-12));
+insert into staff(id,name,gender,job,salary,email,regdate)
+	values(staff_seq.nextval,'小空','男','PHP',2000,'xiaokong@gmail.com',sysdate);
+insert into staff(id,name,gender,job,salary,email,regdate)
+	values(staff_seq.nextval,'小熊','男','产品',3500,'xiaoxiong@gmail.com',sysdate);
+insert into staff(id,name,gender,job,salary,email,regdate)
+	values(staff_seq.nextval,'小哀','女','美工',3000,'xiaoai@gmail.com',sysdate);
 
 -- 删除操作
 drop table staff;

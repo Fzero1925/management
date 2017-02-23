@@ -42,4 +42,10 @@ public interface StaffService {
 	 */
 	String updateStaffs(Staff staff);
 
+	/**
+	 * 批量删除
+	 * @param ids
+	 */
+	void deleteBatch(String[] ids);
+
 }

@@ -9,6 +9,9 @@ import java.util.Date;
  */
 public class Staff {
 	
+/*	//虚列，用于分页查询
+	private int rnum;*/
+	
 	private long id;
 	
 	private String name;
@@ -99,6 +102,14 @@ public class Staff {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+
+/*	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}*/
 
 	
 }

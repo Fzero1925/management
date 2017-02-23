@@ -7,9 +7,8 @@
 <mapper namespace="management.dao.StaffDao">
 
 	<select id="queryStaffList" resultType="Staff">
-		select id,name,gender,job,salary,email,regdate from (
-			select rownum rn, s.* from staff s order by id ) st
-		where st.rn between 1 and 5
+		select id,name,gender,job,salary,email,regdate from 
+		( select rownum rn, s.* from staff s order by id )
 	</select>
 	
 	<insert id="addStaff" >
@@ -29,6 +28,14 @@
 			select rownum rn, s.* from staff s order by id ) st
 		where st.rn between #{pageStart} and #{pageEnd}
 	</select>
+	
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from staff where id in(
+		<foreach collection="list" item="id" separator=",">
+			#{id}
+		</foreach>
+		)
+	</delete>
 	
 	<update id="updateStaffs">
 		update staff 
