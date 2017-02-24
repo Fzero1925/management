@@ -69,9 +69,12 @@ public class StaffAction extends ActionSupport  {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String deleteById() throws UnsupportedEncodingException{
-		ManageCookie manageCookie = new ManageCookie();
+		/*ManageCookie manageCookie = new ManageCookie();
 		Map<String,Object> cookieMap = manageCookie.getCookie();
-		staffService.deleteById(Long.parseLong(cookieMap.get("staffId").toString()));
+		staffService.deleteById(Long.parseLong(cookieMap.get("staffId").toString()));*/
+		HttpServletRequest request = ServletActionContext.getRequest();
+		long id = Long.parseLong(request.getParameter("id"));
+		staffService.deleteById(id);
 		return SUCCESS;
 	}
 	
@@ -84,6 +87,7 @@ public class StaffAction extends ActionSupport  {
 	public String addStaff() throws UnsupportedEncodingException{
 		ManageCookie manageCookie = new ManageCookie();
 		Map<String,Object> cookieMap = manageCookie.getCookie();
+		System.out.println(cookieMap.get("job").toString());
 		staffService.addStaff(cookieMap.get("name").toString(), 
 							  cookieMap.get("gender").toString(), 
 							  cookieMap.get("job").toString(), 

@@ -57,7 +57,7 @@
 								<td><s:date name="#s.regDate" format="yyyy-MM-dd"/></td>
 								<!-- <td><button class="btn btn-info">修改</button></td> -->
 								<td></td>
-								<td><button class="btn btn-info" onclick="deleteStaffById()">删除</button></td>
+								<td><button class="btn btn-info" onclick="deleteStaffById(<s:property value="#s.id"/>)">删除</button></td>
 							</tr>
 						</s:iterator>
 					</tbody>

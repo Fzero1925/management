@@ -22,8 +22,8 @@ var manage = {
 
 
 function deleteStaffById(id){
-	$.cookie("staffId", id)
-	$.post(manage.url.list("deleteById"), {}, function(){
+	/*$.cookie("staffId", id)*/
+	$.post(manage.url.list("deleteById"), {"id" : id}, function(){
 		window.location.reload();//刷新页面
 	});
 }
