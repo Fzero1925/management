@@ -2,7 +2,6 @@ package management.action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,18 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.util.ValueStack;
 
 import management.dto.ManageCookie;
 import management.entity.Staff;
 import management.service.StaffService;
 
+@SuppressWarnings("serial")
 public class StaffAction extends ActionSupport  {
-
-	//使用ModelDriven获取输入框的值
-	private int currentPage;
-
 	
 	@Autowired
 	private StaffService staffService;
@@ -45,7 +40,6 @@ public class StaffAction extends ActionSupport  {
 	 */
 	public String execute(){
 		int pageStart = 1;
-		int pageEnd = 5;
 		List<Staff> staffList = staffService.queryStaffList();
 		for(int i = 1; i <= 5; i++){
 			list.add(staffList.get(pageStart));
@@ -112,7 +106,7 @@ public class StaffAction extends ActionSupport  {
 		if(pageNum >= 1){
 			//设置将要跳转的页面的第一条数据的伪列号
 			int pageStart = ((pageNum - 1) * 5) + 1;
-			int pageEnd = pageNum * 5;
+			/*int pageEnd = pageNum * 5;*/
 			//获取全部数据，方便计算总页数
 			List<Staff> staffList = staffService.queryStaffList();
 			System.out.println("pagepageStaffList: " + staffList.size());
