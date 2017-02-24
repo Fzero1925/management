@@ -6,8 +6,10 @@
 
 # 页面展示
 
-![员工列表页](http://upload-images.jianshu.io/upload_images/4221394-99f4ad183f0fc6d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![登录界面](http://upload-images.jianshu.io/upload_images/4221394-0b05294ee35f6843.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![新增员工](http://upload-images.jianshu.io/upload_images/4221394-462e8edb29f85ecf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![员工列表](http://upload-images.jianshu.io/upload_images/4221394-bcbc61a4e1997e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![员工列表页](http://upload-images.jianshu.io/upload_images/4221394-7f26c9a8c4c94a33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![员工列表](http://upload-images.jianshu.io/upload_images/4221394-ec603a06111ee821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![员工管理](http://upload-images.jianshu.io/upload_images/4221394-3366d20d12080bfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
