@@ -2,7 +2,7 @@
 
 # 系统架构
 - 后端：Struts2 + Spring + MyBatis + Oracle
-- 前端：FreeMarker + Bootstrap的简单应用（自动忽视粗糙的页面设计^_^）
+- 前端：Bootstrap的简单应用（自动忽视粗糙的页面设计^_^）
 
 # 页面展示
 
