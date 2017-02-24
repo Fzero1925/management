@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.util.ValueStack;
 
 import management.dto.ManageCookie;
@@ -21,7 +22,10 @@ import management.entity.Staff;
 import management.service.StaffService;
 
 @SuppressWarnings("serial")
-public class StaffAction extends ActionSupport  {
+public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
+	
+	//设置ModelDriven指定类型的实例对象
+	private Staff staff = new Staff();
 	
 	@Autowired
 	private StaffService staffService;
@@ -85,6 +89,17 @@ public class StaffAction extends ActionSupport  {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String addStaff() throws UnsupportedEncodingException{
+		/*String name = staff.getName();
+		String gender = staff.getGender();
+		String job = staff.getJob();
+		long salary = staff.getSalary();
+		String email = staff.getEmail();
+		System.out.println(name);
+		System.out.println(gender);
+		System.out.println(job);
+		System.out.println(salary);
+		System.out.println(email);
+		return SUCCESS;*/
 		ManageCookie manageCookie = new ManageCookie();
 		Map<String,Object> cookieMap = manageCookie.getCookie();
 		System.out.println(cookieMap.get("job").toString());
@@ -172,6 +187,11 @@ public class StaffAction extends ActionSupport  {
 		String[] ids = request.getParameterValues("ids");
 		staffService.deleteBatch(ids);
 		return "input";
+	}
+
+	public Staff getModel() {
+		// TODO Auto-generated method stub
+		return staff;
 	}
 
 }

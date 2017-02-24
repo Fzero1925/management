@@ -14,19 +14,20 @@
 			</div>
 
 			<div class="panel-body">
+			<%-- <s:form class="form-horizontal" role="form" action="staff_addStaff" method="post" > --%>
 				<table class="table table-striped">
 					<thead>
 						<tr>
 							<th></th>
 							<th>
 								<div class="input-group">
-									<input type="text" calss="form-control" id="name" placeholder="姓名">
+									<input type="text" class="form-control" name="name" id="name" placeholder="姓名">
 								</div>
 							</th>
 							<th>
 								<form role="form">
 									<div class="form-group">
-										<select class="form-control" id="gender">
+										<select class="form-control" name="gender" id="gender">
 											<option>男</option>
 											<option>女</option>
 										</select>
@@ -36,8 +37,9 @@
 							<th>
 								<form role="form">
 									<div class="form-group">
-										<select class="form-control" id="job">
+										<select class="form-control" name="job" id="job">
 											<option>Java</option>
+											<option>美工</option>
 											<option>前端</option>
 											<option>PHP</option>
 											<option>产品</option>
@@ -47,12 +49,12 @@
 							</th>
 							<th>
 								<div class="input-group">
-									<input type="text" calss="form-control" id="salary" placeholder="薪资">
+									<input type="text" calss="form-control" name="salary" id="salary" placeholder="薪资">
 								</div>
 							</th>
 							<th>
 								<div class="input-group">
-									<input type="text" calss="form-control" id="email" placeholder="邮箱">
+									<input type="text" calss="form-control" name="email" id="email" placeholder="邮箱">
 								</div>
 							</th>
 							<th><button class="btn btn-info" onclick="addStaff()">提交</button></th>
@@ -60,6 +62,7 @@
 						</tr>
 					</thead>
 				</table>
+				<%-- </s:form> --%>
 			</div>
 		</div>
 	</div>

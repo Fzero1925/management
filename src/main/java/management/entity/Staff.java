@@ -33,7 +33,7 @@ public class Staff {
 		return "Staff [id=" + id + ", name=" + name 
 				+ ", gender=" + gender  + ", job=" 
 				+ job + ", salary=" + salary
-				+ ", fepartment=" + department 
+				+ ", department=" + department 
 				+ ", email=" + email + ", regDate=" 
 				+ regDate 
 				+ "]";
