@@ -94,20 +94,27 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 		String job = staff.getJob();
 		long salary = staff.getSalary();
 		String email = staff.getEmail();
-		System.out.println(name);
-		System.out.println(gender);
-		System.out.println(job);
-		System.out.println(salary);
-		System.out.println(email);
 		return SUCCESS;*/
-		ManageCookie manageCookie = new ManageCookie();
+		/*ManageCookie manageCookie = new ManageCookie();
 		Map<String,Object> cookieMap = manageCookie.getCookie();
 		System.out.println(cookieMap.get("job").toString());
 		staffService.addStaff(cookieMap.get("name").toString(), 
 							  cookieMap.get("gender").toString(), 
 							  cookieMap.get("job").toString(), 
 							  Long.parseLong(cookieMap.get("salary").toString()), 
-							  cookieMap.get("email").toString());
+							  cookieMap.get("email").toString());*/
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String name = request.getParameter("name");
+		String gender = request.getParameter("gender");
+		String job = request.getParameter("job");
+		long salary = Long.parseLong(request.getParameter("salary"));
+		String email = request.getParameter("email");
+		/*System.out.println(name);
+		System.out.println(gender);
+		System.out.println(job);
+		System.out.println(salary);
+		System.out.println(email);*/
+		staffService.addStaff(name, gender, job, salary, email);
 		return SUCCESS;
 	}
 	

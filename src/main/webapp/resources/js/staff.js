@@ -35,31 +35,42 @@ function addStaff(){
 	var gender = $('#gender').val();
 	var salary = $('#salary').val();
 	var job = $('#job').val();
-	$.cookie("name", name);
+	/*$.cookie("name", name);
 	$.cookie("gender", gender);
 	$.cookie("job", job);
 	$.cookie("salary", salary);
-	$.cookie("email", email);
-	$.post(manage.url.addStaff("addStaff"), {}, function(){
-/*		$.cookie("name", name);
-		$.cookie("gender", gender);
-		$.cookie("job", job);
-		$.cookie("salary", salary);
-		$.cookie("email", email);*/
-/*		document.cookie = "name=" + name +";"
-		document.cookie = "gender=" + gender +";";
-		document.cookie = "job=" + job +";";
-		document.cookie = "salary=" + salary +";";
-		document.cookie = "email=" + email +";";*/
-		window.location.reload();//刷新页面
-		
-/*		var time = new Date();
-		time.setTime(time.getTime() - 1000);//当前时间减去一秒，使Cookie过期
-		$.cookie("name", name, {expires:time.toGMTString()});
-		$.cookie("gender", gender, {expires:time.toGMTString()});
-		$.cookie("job", job, {expires:time.toGMTString()});
-		$.cookie("salary", salary, {expires:time.toGMTString()});*/
-	});
+	$.cookie("email", email);*/
+	if(salary && !isNaN(salary)){
+		$.post(manage.url.addStaff("addStaff"), {
+			"name" : name,
+			"gender" : gender,
+			"job" : job,
+			"salary" : salary,
+			"email" : email
+		}, function(){
+	/*		$.cookie("name", name);
+			$.cookie("gender", gender);
+			$.cookie("job", job);
+			$.cookie("salary", salary);
+			$.cookie("email", email);*/
+	/*		document.cookie = "name=" + name +";"
+			document.cookie = "gender=" + gender +";";
+			document.cookie = "job=" + job +";";
+			document.cookie = "salary=" + salary +";";
+			document.cookie = "email=" + email +";";*/
+			window.location.reload();//刷新页面
+			
+	/*		var time = new Date();
+			time.setTime(time.getTime() - 1000);//当前时间减去一秒，使Cookie过期
+			$.cookie("name", name, {expires:time.toGMTString()});
+			$.cookie("gender", gender, {expires:time.toGMTString()});
+			$.cookie("job", job, {expires:time.toGMTString()});
+			$.cookie("salary", salary, {expires:time.toGMTString()});*/
+		});
+	}else{
+		alert("工资栏应该填写数字！！！");
+	}
+	
 }
 
 /*function active(pageNum){
