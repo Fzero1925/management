@@ -31,7 +31,22 @@
   	<load-on-startup>1</load-on-startup>
   </servlet>
   
-
+	<!-- kaptcha验证码组件配置 -->
+	<servlet>
+        <servlet-name>Kaptcha</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+        
+        <init-param>
+        	<description>图片边框  合法值：yes，no</description>
+        	<param-name>kaptcha.border</param-name>
+        	<param-value>no</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Kaptcha</servlet-name>
+        <url-pattern>/Kaptcha.jpg</url-pattern>
+    </servlet-mapping>
   
   <display-name>Archetype Created Web Application</display-name>
 </web-app>

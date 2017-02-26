@@ -29,12 +29,15 @@
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
-				      <div class="checkbox">
+				      <!-- <div class="checkbox">
 				        <label>
 				          <input type="checkbox">请记住我
 				        </label>
-				      </div>
-				    </div>
+				      </div> -->
+						<img src="Kaptcha.jpg" id="kaptchaImage" /> 
+						<a href="javascript:_change()">换一张</a>
+				      	<input type="text" class="form-control" name="kaptcha" id="kaptcha" placeholder="请输入验证码" style="max-width:15%">
+					</div>
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-10">
