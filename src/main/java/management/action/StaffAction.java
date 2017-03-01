@@ -120,11 +120,11 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 	
 	public String queryByPage(){
 		//获取response对象，用户设置Cookie信息
-		HttpServletResponse response = ServletActionContext.getResponse();
+		/*HttpServletResponse response = ServletActionContext.getResponse();*/
 		//获取request对象，获取前端传递过来的Cookie和通过URL传递的参数
 		HttpServletRequest request = ServletActionContext.getRequest();
-		Cookie[] cookies= request.getCookies();
-		System.out.println("cookies: " + cookies);
+		/*Cookie[] cookies= request.getCookies();
+		System.out.println("cookies: " + cookies);*/
 		//对传递过来的指定页码进行格式转换
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		System.out.println("pagepageNum: " + pageNum);
@@ -163,22 +163,22 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 				//向值栈中设置要传递的参数
 				stack.set("sumPage", (int)sumPage);
 				stack.set("currentPage", pageNum);
-				Cookie cookie1 = new Cookie("pageInfo", "");
-				response.addCookie(cookie1);
+				/*Cookie cookie1 = new Cookie("pageInfo", "");
+				response.addCookie(cookie1);*/
 				/*String currentPage = request.getParameter("currentPage");
 				Cookie cookie2 = new Cookie("currentPage", currentPage);
 				response.addCookie(cookie2);*/
 				return SUCCESS;
 			}else{
-				Cookie cookie = new Cookie("pageInfo", "noData");
+				/*Cookie cookie = new Cookie("pageInfo", "noData");
 				response.addCookie(cookie);
-				System.out.println(cookie);
+				System.out.println(cookie);*/
 				return SUCCESS;
 			}
 		}else{
-			Cookie cookie = new Cookie("pageInfo", "noPage");
+			/*Cookie cookie = new Cookie("pageInfo", "noPage");
 			response.addCookie(cookie);
-			System.out.println(cookie);
+			System.out.println(cookie);*/
 			return SUCCESS;
 		}
 	}

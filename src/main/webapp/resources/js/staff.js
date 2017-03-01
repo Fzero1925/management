@@ -186,12 +186,29 @@ $(document).ready(function(){
 	});*/
 });
 
-$('#go').click(function(){
+function go(sumPage){
+	var pageNum = $('#inputGo').val();
+	if(pageNum == null){
+		alert("没有负数页码！！！");
+	}else if(isNaN(pageNum)){
+		alert("请输入数字！！！");
+	}else if(pageNum > sumPage){
+		alert("没有数据！！！");
+	}else if(pageNum < 1){
+		alert("没有输入页码！！！");
+	}else{
+		$.post(manage.url.page("queryByPage"), {"pageNum" : pageNum}, function(){
+			location.href="/management/list_queryByPage.action?pageNum=" + pageNum;
+		});
+	}
+}
+
+/*$('#go').click(function(){
 	var pageNum = $('#inputGo').val();
 	console.log(pageNum);
-/*	if($.cookie("pageNum")){
+	if($.cookie("pageNum")){
 		$.cookie("pageNum", "");
-	}*/
+	}
 	if(pageNum == null){
 		alert("没有输入页码！！！");
 	}else{
@@ -201,14 +218,14 @@ $('#go').click(function(){
 			}else
 			if($.cookie("pageInfo") == "noPage"){
 				alert("没有负数页码！！！");
-				/*$.cookie("pageInfo", "");*/
+				$.cookie("pageInfo", "");
 			}else if($.cookie("pageInfo") == "noData"){
 				alert("没有数据！！！");
-				/*$.cookie("pageInfo", "");*/
+				$.cookie("pageInfo", "");
 			}
 		});
 	}
-});
+});*/
 
 function deleteMore(){
 	var mainForm = $('#mainForm');

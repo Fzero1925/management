@@ -12,10 +12,10 @@ $(function() {
 	        $(this).attr('src', 'Kaptcha.jpg?' + Math.floor(Math.random() * 100));
 	    })
 	});
-	//点击换一张,更换图片
-	function _change() {
-	        $("#kaptchaImage").attr('src', 'Kaptcha.jpg?' + Math.floor(Math.random() * 100));
-	}
+//点击换一张,更换图片
+function _change() {
+	$("#kaptchaImage").attr('src', 'Kaptcha.jpg?' + Math.floor(Math.random() * 100));
+}
 
 /*$('#login').click(function(){
 var username = $('#username').val();

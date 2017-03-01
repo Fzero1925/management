@@ -17,6 +17,9 @@ public class StaffServiceImpl implements StaffService {
 	@Autowired
 	private StaffDao staffDao;
 
+	/**
+	 * 查询所有员工信息
+	 */
 	public List<Staff> queryStaffList() {
 		List<Staff> staffList = staffDao.queryStaffList();
 		return staffList;

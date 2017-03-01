@@ -7,7 +7,7 @@ import management.entity.Staff;
 public interface StaffService {
 	
 	/**
-	 * 根据id查询员工信息
+	 * 查询所有员工信息
 	 * @param staffId
 	 * @return
 	 */

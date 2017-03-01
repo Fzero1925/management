@@ -34,7 +34,6 @@
 		<action name="list_*" class="management.action.StaffAction" method="{1}">
 			<result >/WEB-INF/jsp/list.jsp</result>
 			<result name="input" type="redirect">/list</result>
-			
 		</action>
 		
 		<action name="staff_*" class="management.action.StaffAction" method="{1}">

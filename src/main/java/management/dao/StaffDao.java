@@ -9,7 +9,7 @@ import management.entity.Staff;
 public interface StaffDao {
 	
 	/**
-	 * 根据id查询员工信息
+	 * 查询所有员工信息
 	 * @param staffId
 	 * @return
 	 */

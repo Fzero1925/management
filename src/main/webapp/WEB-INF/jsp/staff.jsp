@@ -27,7 +27,7 @@
 							<th>
 								<form role="form">
 									<div class="form-group">
-										<select class="form-control" name="gender" id="gender">
+										<select class="form-control" name="gender" id="gender" >
 											<option>男</option>
 											<option>女</option>
 										</select>

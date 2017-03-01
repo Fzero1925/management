@@ -116,7 +116,10 @@
 							</li>
 								<input type="text" class="form-control" id="inputGo" style="max-width:20%;">
 								<span class="input-group-btn">
-									<button class="btn btn-default" id="go">Go</button>
+									<button class="btn btn-default" id="go" 
+											onclick="go(<s:property value="sumPage"/>)">
+										Go
+									</button>
 								</span>
 						</ul>
 					</div>
