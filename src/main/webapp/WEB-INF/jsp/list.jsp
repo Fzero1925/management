@@ -18,6 +18,11 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+							<th><span>欢迎你：<s:property value="#session['UserName']"/></span></th>
+							<th><a class="btn btn-info" href="/management/login" onclick="deleteSession()">退出</a></th>
+						</tr>
+						<tr>
 							<th><button class="btn btn-info" onclick="deleteMore()">删除</button></th>
 							<th></th><th></th><th></th><th></th><th></th><th></th><th></th>
 							<th><a class="btn btn-info" href="/management/staff" onclick="deleteCookie()">员工管理</a></th>
@@ -140,7 +145,7 @@
 <script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 <!-- 引入外部js -->	
-<script src="resources/js/staff.js" type="text/javascript"></script>
+<script src="resources/js/list.js" type="text/javascript"></script>
 <!-- <script type="text/javascript">
 	$(function(){
 		manage.init({

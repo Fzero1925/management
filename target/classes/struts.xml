@@ -26,17 +26,31 @@
 	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
 
 	<package name="management" extends="struts-default" namespace="/">
+		<!-- 注册拦截器 -->
+		<interceptors>
+			<interceptor name="auth" class="management.interceptor.AuthInterceptor"></interceptor>
+			
+			<!-- 自定义拦截器栈 -->
+			<interceptor-stack name="myInterceptor">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="auth"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	
 		<action name="login" class="management.action.LoginAction" method="login">
 			<result name="success" type="redirect">/list</result>
 			<result name="input" >/WEB-INF/jsp/login.jsp</result>
 		</action>
 	
 		<action name="list_*" class="management.action.StaffAction" method="{1}">
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
 			<result >/WEB-INF/jsp/list.jsp</result>
 			<result name="input" type="redirect">/list</result>
+			<result name="login" type="redirect">/login</result>
 		</action>
 		
 		<action name="staff_*" class="management.action.StaffAction" method="{1}">
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
 			<result >/WEB-INF/jsp/staff.jsp</result>
 		</action>
 	</package>
