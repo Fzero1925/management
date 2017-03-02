@@ -52,6 +52,7 @@
 		<action name="staff_*" class="management.action.StaffAction" method="{1}">
 			<interceptor-ref name="myInterceptor"></interceptor-ref>
 			<result >/WEB-INF/jsp/staff.jsp</result>
+			<result name="login" type="redirect">/login</result>
 		</action>
 	</package>
 </struts>

@@ -22,12 +22,16 @@
 							<th><span>欢迎你：<s:property value="#session['UserName']"/></span></th>
 							<th><a class="btn btn-info" href="/management/login" onclick="deleteSession()">退出</a></th>
 						</tr>
-						<tr>
-							<th><button class="btn btn-info" onclick="deleteMore()">删除</button></th>
-							<th></th><th></th><th></th><th></th><th></th><th></th><th></th>
-							<th><a class="btn btn-info" href="/management/staff" onclick="deleteCookie()">员工管理</a></th>
-							<th><a class="btn btn-info" href="/management/position" onclick="deleteCookie()">职位管理</a></th>
-						</tr>
+						
+						<%-- 如果登录用于不是admin，则屏蔽所有能对数据操作的按钮 --%>
+						<s:if test="#session['UserName'] == 'admin'">
+							<tr>
+								<th><button class="btn btn-info" onclick="deleteMore()">删除</button></th>
+								<th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+								<th><a class="btn btn-info" href="/management/staff" onclick="deleteCookie()">员工管理</a></th>
+								<th><a class="btn btn-info" href="/management/position" onclick="deleteCookie()">职位管理</a></th>
+							</tr>
+						</s:if>
 						<tr>
 							<th></th>
 							<th>ID</th>
@@ -62,7 +66,11 @@
 								<td><s:date name="#s.regDate" format="yyyy-MM-dd"/></td>
 								<!-- <td><button class="btn btn-info">修改</button></td> -->
 								<td></td>
-								<td><button class="btn btn-info" onclick="deleteStaffById(<s:property value="#s.id"/>)">删除</button></td>
+								<td>
+									<s:if test="#session['UserName'] == 'admin'">
+											<button class="btn btn-info" onclick="deleteStaffById(<s:property value="#s.id"/>)">删除</button>
+									</s:if>
+								</td>
 							</tr>
 						</s:iterator>
 					</tbody>

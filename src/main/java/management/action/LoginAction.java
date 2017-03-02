@@ -43,6 +43,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<Login>, Se
 		System.out.println(username);
 		System.out.println(password);
 		System.out.println(kaptcha);
+		//首先清除Session中有关登录的信息
+		//否则用户在点击退出按钮的时候，还能通过URL直接进入列表页
 		if(session.get("UserName") != null){
 			session.put("UserName", "");
 		}
